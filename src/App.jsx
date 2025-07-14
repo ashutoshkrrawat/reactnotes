@@ -89,5 +89,5 @@ function App() {
   )
   
 }
-console.log("message only for testing git changes")
+console.log("message only for testing github changes")
 export default App
