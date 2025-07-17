@@ -1,0 +1,24 @@
+/*
+📌 useCallback and length issue (Important)
+
+- When we write useCallback(() => {...}, []), that is we remove the dependencies it remembers the values 
+  from the first time only (like length, numberAllowed, etc.).
+
+- So if we change the length later (like using a slider), the function 
+  still uses the old length.
+
+- Even if useEffect runs again, it will call the old version of the function 
+  unless we update the dependencies.
+
+❌ Wrong:
+useCallback(() => {
+  // uses old length
+}, []);
+
+✅ Correct:
+useCallback(() => {
+  // uses updated length and options
+}, [length, numberAllowed, characterAllowed]);
+
+👉 Always include variables you use inside the function in the dependency list.
+*/

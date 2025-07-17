@@ -6,8 +6,9 @@ function App() {
   const [numberAllowed,setNumberAllowed]=useState(false);
   const[characterAllowed,setCharacterAllowed]=useState(false);
   const[password,setPassword]=useState("")
-  const passwordref=useRef(null)
-  const passwordGenerator=useCallback(()=>{
+  const passwordref=useRef(null)//useref hook
+  
+  const passwordGenerator=useCallback(()=>{//we can only pass a function in usecall back
       let pass=""
       let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
       if(numberAllowed)
@@ -31,9 +32,10 @@ function App() {
 
   /* function to copy the text */
   const copypasswordtoclipboard=useCallback(()=>{
-    passwordref.current?.select();
+    passwordref.current?.select();  //here password ref is used so we can give effect to user that the text is copied and we can also check many otheer things using password ref
     passwordref.current?.setSelectionRange(0,3);
-    window.navigator.clipboard.writeText(password)
+    
+    window.navigator.clipboard.writeText(password)//as we are executing this is core react therefore we can use the "window" keyword, only this line can also word for copying but 
   },[password])
   useEffect(()=>{
     passwordGenerator()
@@ -53,14 +55,15 @@ function App() {
         </div>
         <div className='flex text-sm gap-x-2'>
           <div className='flex items-center gap-x-1'>
-            <input type="range"
+            {/* this is the part of length slider */} 
+            <input type="range"//This makes it a slider
             min={6}
             max={100}
             value={length}
             className='cursor-pointer'
-            onChange={(e)=>{setLength(e.target.value)}}
+            onChange={(e)=>{setLength(e.target.value)}}//update state when slider moves
             />
-             <label > length:{length}</label>
+             <label > length:{length}</label>{/* this line display the current val */}
           </div>
           <div className='flex items-center gap-x-1'>
               <input type="checkbox"
@@ -84,6 +87,7 @@ function App() {
       </div>
     </>
   )
+  
 }
-
+console.log("message only for testing github changes")
 export default App

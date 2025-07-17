@@ -1,0 +1,11 @@
+in React, you can only pass props to your direct children — not to grandchildren or great-grandchildren.
+
+therefor we cant just make a global file instead of context api 
+
+-  imagine this
+
+<App>
+  <Navbar>
+    <UserAvatar />
+  </Navbar>
+</App>
